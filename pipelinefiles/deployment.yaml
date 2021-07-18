@@ -1,0 +1,47 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: elog-authentication
+  name: elog-authentication
+  namespace: elog-authentication-service
+spec:
+  replicas: 1
+  selector:
+
+    app: elog-authentication
+    deploymentconfig: elog-authentication
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: elog-authentication
+        deploymentconfig: elog-authentication
+    spec:
+      containers:
+        - image: docker-registry.default.svc:5000/elog-authentication-service/elog-authentication
+          imagePullPolicy: Always
+          name: elog-authentication
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - elog-authentication
+        from:
+          kind: ImageStreamTag
+          name: 'elog-authentication:latest'
+          namespace: elog-authentication-service
+      type: ImageChange
