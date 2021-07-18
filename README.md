@@ -1,4 +1,4 @@
-# maxis-elog-authentication-service
+# marketplace-authentication-service
 
 <!--## Documentation
 ### Login
