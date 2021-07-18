@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: elog-authentication
-  name: elog-authentication
-  namespace: elog-authentication-service
+    app: marketplace-authentication
+  name: marketplace-authentication
+  namespace: marketplace-authentication-service
 spec:
   ports:
     - name: 8080-tcp
@@ -12,5 +12,5 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    deploymentconfig: elog-authentication
+    deploymentconfig: marketplace-authentication
   type: ClusterIP

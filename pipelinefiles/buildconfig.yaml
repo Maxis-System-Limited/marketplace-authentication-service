@@ -2,16 +2,16 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   labels:
-    build: elog-authentication-build
-  name: elog-authentication-build
-  namespace: elog-authentication-service
+    build: marketplace-authentication-build
+  name: marketplace-authentication-build
+  namespace: marketplace-authentication-service
 spec:
   failedBuildsHistoryLimit: 5
   nodeSelector: null
   output:
     to:
       kind: ImageStreamTag
-      name: 'elog-authentication:latest'
+      name: 'marketplace-authentication:latest'
   postCommit: {}
   resources: {}
   runPolicy: Serial

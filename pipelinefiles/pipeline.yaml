@@ -1,14 +1,14 @@
 kind: "BuildConfig"
 apiVersion: "v1"
 metadata:
-  name: "elog-authentication-pipeline"
+  name: "marketplace-authentication-pipeline"
 spec:
   source:
     git:
       ref: main
-      uri: 'https://github.com/Maxis-System-Limited/elogistic-authentication-service'
+      uri: 'https://github.com/Maxis-System-Limited/marketplace-authentication-service'
     sourceSecret:
-      name: elog-authentication-secret
+      name: marketplace-authentication-secret
     type: Git
   strategy:
     jenkinsPipelineStrategy:

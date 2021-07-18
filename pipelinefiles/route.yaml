@@ -2,15 +2,15 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    app: elog-authentication
-  name: elog-authentication
-  namespace: elog-authentication-service
+    app: marketplace-authentication
+  name: marketplace-authentication
+  namespace: marketplace-authentication-service
 spec:
-  host: elog-authentication-maxis.nagadpay.com 
+  host: marketplace-authentication-maxis.nagadpay.com 
   port:
     targetPort: 8080-tcp
   to:
     kind: Service
-    name: elog-authentication
+    name: marketplace-authentication
     weight: 100
   wildcardPolicy: None

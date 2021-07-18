@@ -25,7 +25,7 @@ pipeline{
     stage ('Build Image') {
       steps{
       sh '''
-          oc start-build elog-authentication-build --from-dir=. --follow
+          oc start-build marketplace-authentication-build --from-dir=. --follow
         '''
       }
     }    

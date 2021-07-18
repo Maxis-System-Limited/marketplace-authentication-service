@@ -2,15 +2,15 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   labels:
-    app: elog-authentication
-  name: elog-authentication
-  namespace: elog-authentication-service
+    app: marketplace-authentication
+  name: marketplace-authentication
+  namespace: marketplace-authentication-service
 spec:
   replicas: 1
   selector:
 
-    app: elog-authentication
-    deploymentconfig: elog-authentication
+    app: marketplace-authentication
+    deploymentconfig: marketplace-authentication
   strategy:
     activeDeadlineSeconds: 21600
     resources: {}
@@ -19,13 +19,13 @@ spec:
   template:
     metadata:
       labels:
-        app: elog-authentication
-        deploymentconfig: elog-authentication
+        app: marketplace-authentication
+        deploymentconfig: marketplace-authentication
     spec:
       containers:
-        - image: docker-registry.default.svc:5000/elog-authentication-service/elog-authentication
+        - image: docker-registry.default.svc:5000/marketplace-authentication-service/marketplace-authentication
           imagePullPolicy: Always
-          name: elog-authentication
+          name: marketplace-authentication
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -39,9 +39,9 @@ spec:
     - imageChangeParams:
         automatic: true
         containerNames:
-          - elog-authentication
+          - marketplace-authentication
         from:
           kind: ImageStreamTag
-          name: 'elog-authentication:latest'
-          namespace: elog-authentication-service
+          name: 'marketplace-authentication:latest'
+          namespace: marketplace-authentication-service
       type: ImageChange
